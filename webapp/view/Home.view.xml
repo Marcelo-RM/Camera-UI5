@@ -1,0 +1,20 @@
+<mvc:View
+	controllerName="project.camera.controller.Home"
+	displayBlock="true"
+	xmlns="sap.m"
+	xmlns:cam="project.camera.camera"
+	xmlns:mvc="sap.ui.core.mvc">
+	<Page
+		id="page"
+		title="SAPUI5 Camera">
+		<content>
+			<HBox class="sapUiSmallMargin">
+				<cam:Camera onChange=".selectImage"/>
+			</HBox>
+
+			<HBox class="sapUiSmallMargin">
+				<Image id="image" width="300px" height="400px"/>
+			</HBox>
+		</content>
+	</Page>
+</mvc:View>
