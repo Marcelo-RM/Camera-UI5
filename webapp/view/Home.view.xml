@@ -9,7 +9,7 @@
 		title="SAPUI5 Camera">
 		<content>
 			<HBox class="sapUiSmallMargin">
-				<cam:Camera onChange=".selectImage"/>
+				<cam:Camera text="Clique" onChange=".selectImage"/>
 			</HBox>
 
 			<HBox class="sapUiSmallMargin">

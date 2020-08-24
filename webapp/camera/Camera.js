@@ -32,42 +32,16 @@ sap.ui.define([
                 properties: {
 
                     /**
-                     * Width of the preview window in pixels
+                     * Text to show in Button
                      */
-                    "width": {
+                    "Text": {
                         type: "string",
-                        defaultValue: "640"
+                        defaultValue: ""
                     },
 
                     /**
-                     * Height of the preview window in pixels
+                     * Config if button is active
                      */
-                    "height": {
-                        type: "string",
-                        defaultValue: "480"
-                    },
-
-                    /**
-                     * Width of the video capture window in pixels
-                     */
-                    "videoWidth": {
-                        type: "string",
-                        defaultValue: "1280"
-                    },
-
-                    /**
-                     * Height of the video capture window in pixels
-                     */
-                    "videoHeight": {
-                        type: "string",
-                        defaultValue: "960"
-                    },
-
-                    "buttonOnly": {
-                        type: "boolean",
-                        defaultValue: false
-                    },
-
                     "enabled": {
                         type: "boolean",
                         defaultValue: true
@@ -75,13 +49,11 @@ sap.ui.define([
                 },
                 events: {
                     /**
-                     * Raised when the user clicks/taps the video preview.
+                     * Raised when the user clicks/taps the button.
                      * The event object contain a parameter called "image"
                      * which contains a base64 encoded png file. This is a
                      * string.
                      */
-                    "snapshot": {},
-
                     "onChange": {}
 
                 }
@@ -92,51 +64,20 @@ sap.ui.define([
              */
             init: function () {
                 var that = this;
-                this._displayingVideo = false; // Is the control displaying video at the moment?
             },
 
 
             /**
-             * Handler for when the user clicks the video preview.
-             * Fires the Snapshot event with the image inside.
+             * Handler for when the user clicks the camera button.
+             * Fires the onclick event with the image inside.
              **/
             _onUserClickedBtnCamera: function (oInputCamera) {
                 oInputCamera.click();
             },
 
-
-            /**
-             * Takes a screenshot of the video element and returns its
-             * data in PNG format.
-             **/
-            _takePicture: function (width, height) {
-                var oCanvas = this._getCanvas();
-                var oVideo = this._getVideo();
-                var oImageData = null;
-                var context = oCanvas.getContext('2d');
-                if (width && height) {
-                    context.drawImage(oVideo, 0, 0, width, height);
-                    oImageData = oCanvas.toDataURL('image/png');
-                }
-                return oImageData;
-            },
-
-
             _getButton: function () {
                 return document.getElementById("__Button-Camera");
             },
-
-
-            /**
-             *
-             */
-            stopCamera: function () {
-                this._displayingVideo = false;
-                if (this._stream) {
-                    this._stream.getVideoTracks().forEach(function (t) { t.stop(); });
-                }
-            },
-
 
             /**
              *
