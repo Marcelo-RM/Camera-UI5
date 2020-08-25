@@ -8,9 +8,10 @@
  */
 sap.ui.define([
     'jquery.sap.global',
-    'sap/ui/core/Control'
+    'sap/ui/core/Control',
+    'sap/ui/core/IconPool'
 ],
-    function (jQuery, Control) {
+    function (jQuery, Control, IconPool) {
         "use strict";
 
         /**
@@ -45,6 +46,15 @@ sap.ui.define([
                     "type": {
                         type: "string",
                         defaultValue: ""
+                    },
+
+                    /**
+                     * Icon for button
+                     */
+                    "icon": {
+                        type: "sap.ui.core.URI",
+                        group: "Appearance",
+                        defaultValue: "sap-icon://camera"
                     },
 
                     /**
@@ -85,6 +95,12 @@ sap.ui.define([
 
             _getButton: function () {
                 return document.getElementById("__Button--Camera" + this);
+            },
+
+            onBeforeRendering: function () {
+                //set icon for button
+                var oIconPool = IconPool.getIconInfo(this.getIcon());
+                this.icon = oIconPool ? oIconPool.content : '';
             },
 
             /**

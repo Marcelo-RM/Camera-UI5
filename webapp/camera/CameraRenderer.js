@@ -62,7 +62,7 @@ sap.ui.define([],
             oRm.openStart('span', '__Icon-camera');
             oRm.attr('role', 'presentation');
             oRm.attr('aria-hidden', true);
-            oRm.attr('data-sap-ui-icon-content', '');
+            oRm.attr('data-sap-ui-icon-content', oControl.icon);//'');
             oRm.class('sapUiIcon');
             oRm.class('sapUiIconMirrorInRTL');
             oRm.class('sapMBtnCustomIcon');
