@@ -25,7 +25,8 @@ sap.ui.define([
          * @public
          * @alias project.camera.camera.Camera
          */
-        var oCamera = Control.extend("project.camera.camera.Camera", {
+        var sNameSpace = Object.keys(window['sap-ui-config'].resourceroots)[0];
+        var oCamera = Control.extend(sNameSpace + ".camera.Camera", {
             /**
              * Control API
              */
