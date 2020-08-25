@@ -9,9 +9,14 @@ Check a demo app [here](https://marcelo-rm.github.io/Camera-UI5/webapp/)
 To use it you must create a folder called camera inside the webapp folder of your project, and add the Camera.js and CameraRender.js inside camera folder.
 
 In the view you want to use the control, insert the following:
-`xmlns:c="project.namespace.camera"`
-`...`
-`<c:Camera icon="sap-icon://add-photo" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Accept" />`
+``` xml
+<mvc:View
+	xmlns:c="project.camera.camera"
+	xmlns:mvc="sap.ui.core.mvc
+...
+
+<c:Camera icon="sap-icon://add-photo" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Accept" />
+```
 
 In the view controller, create the event that will be triggered when selecting / taking the photo. To capture the return of the event it is necessary to take the parameter image of the event:
 
@@ -29,4 +34,4 @@ When developing a new feature, use a feature branch.
 Feel free to update the contributors section.
 
 ## Contributors
-Marcelo Montalvão - marcelordrgs98@gmail.com - @mr_montalvao
+Marcelo Montalvão - marcelordrgs98@gmail.com - @mr_montalvao - [web site](https://marcelo-rm.github.io/portifolio)
