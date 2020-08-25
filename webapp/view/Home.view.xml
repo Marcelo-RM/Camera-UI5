@@ -9,7 +9,7 @@
 		title="SAPUI5 Camera">
 		<content>
 			<VBox class="sapUiSmallMargin">
-				<cam:camera text="Take a picture" onChange=".selectImage"/>
+				<cam:Camera text="Take a picture" onChange=".selectImage"/>
 				<cam:Camera onChange=".selectImage" />
 			</VBox>
 
