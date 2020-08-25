@@ -25,16 +25,30 @@ sap.ui.define([],
             oRm.openEnd();
 
             //Open Div Tag
-            oRm.openStart('div');
+            oRm.openStart('span');
             oRm.class('sapMBtnInner');
             oRm.class('sapMBtnHoverable');
             oRm.class('sapMFocusable');
-            oRm.class('sapMBtnDefault');
+
+            //Classes para quando exibir texto
             if (sText) {
                 oRm.class('sapMBtnIconLast');
                 oRm.class('sapMBtnText');
             } else {
                 oRm.class('sapMBtnIconFirst');
+            }
+
+            //Classes para tratar o tipo
+            switch (oControl.getProperty('type')) {
+                case "Accept": oRm.class('sapMBtnAccept'); break;
+                case "Success": oRm.class('sapMBtnSuccess'); break;
+                case "Reject": oRm.class('sapMBtnReject'); break;
+                case "Negative": oRm.class('sapMBtnNegative'); break;
+                case "Attention": oRm.class('sapMBtnAttention'); break;
+                case "Critical": oRm.class('sapMBtnCritical'); break;
+                case "Ghost": oRm.class('sapMBtnGhost'); break;
+                case "Emphasized": oRm.class('sapMBtnEmphasized'); break;
+                default: oRm.class('sapMBtnDefault'); break;
             }
             oRm.openEnd();
 
@@ -63,7 +77,7 @@ sap.ui.define([],
             oRm.close('span');
 
             //Close Div tag
-            oRm.close('div');
+            oRm.close('span');
 
             //Close Button tag
             oRm.close('button');

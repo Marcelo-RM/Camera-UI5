@@ -40,6 +40,14 @@ sap.ui.define([
                     },
 
                     /**
+                     * Type of button, defines style
+                     */
+                    "type": {
+                        type: "string",
+                        defaultValue: ""
+                    },
+
+                    /**
                      * Config if button is active
                      */
                     "enabled": {
