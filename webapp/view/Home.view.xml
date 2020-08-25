@@ -8,13 +8,14 @@
 		id="page"
 		title="SAPUI5 Camera">
 		<content>
-			<HBox class="sapUiSmallMargin">
-				<cam:Camera text="Clique" onChange=".selectImage"/>
-			</HBox>
+			<VBox class="sapUiSmallMargin">
+				<cam:camera text="Take a picture" onChange=".selectImage"/>
+				<cam:Camera onChange=".selectImage" />
+			</VBox>
 
-			<HBox class="sapUiSmallMargin">
+			<VBox class="sapUiSmallMargin">
 				<Image id="image" width="300px" height="400px"/>
-			</HBox>
+			</VBox>
 		</content>
 	</Page>
 </mvc:View>

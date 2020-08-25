@@ -22,7 +22,7 @@ sap.ui.define([
          * @class
          *
          * @public
-         * @alias openui5.camera.Camera
+         * @alias project.camera.camera.Camera
          */
         var oCamera = Control.extend("project.camera.camera.Camera", {
             /**
@@ -34,7 +34,7 @@ sap.ui.define([
                     /**
                      * Text to show in Button
                      */
-                    "Text": {
+                    "text": {
                         type: "string",
                         defaultValue: ""
                     },
@@ -76,7 +76,7 @@ sap.ui.define([
             },
 
             _getButton: function () {
-                return document.getElementById("__Button-Camera");
+                return document.getElementById("__Button--Camera" + this);
             },
 
             /**
@@ -85,7 +85,7 @@ sap.ui.define([
             onAfterRendering: function () {
                 var that = this;
                 var oCameraBtn = this._getButton();
-                var oInputCamera = document.getElementById("__Input-Camera");
+                var oInputCamera = document.getElementById("__Input-Camera" + this);
 
                 oInputCamera.addEventListener("change", function (oEvent) {
                     var selectedFile = oEvent.target.files[0];
