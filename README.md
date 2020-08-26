@@ -11,8 +11,8 @@ To use it you must create a folder called camera inside the webapp folder of you
 In the view you want to use the control, insert the following:
 ``` xml
 <mvc:View
-	xmlns:c="project.camera.camera"
-	xmlns:mvc="sap.ui.core.mvc
+	xmlns:c="project.namespace.camera"
+	xmlns:mvc="sap.ui.core.mvc"
 ...
 
 <c:Camera icon="sap-icon://add-photo" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Accept" />

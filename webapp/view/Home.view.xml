@@ -8,24 +8,49 @@
 		id="page"
 		title="OPENUI5 Camera">
 		<content>
-			<VBox class="sapUiSmallMargin">
-				<cam:Camera text="Take a picture" icon="sap-icon://camera" onChange=".selectImage"/>
-				<HBox>
-					<cam:Camera icon="sap-icon://add-photo" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Accept" />
-					<cam:Camera icon="sap-icon://add-photo" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Success" />
-					<cam:Camera icon="sap-icon://camera" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Reject" />
-					<cam:Camera icon="sap-icon://camera" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Negative"/>
-					<cam:Camera icon="sap-icon://add-photo" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Attention" />
-					<cam:Camera icon="sap-icon://add-photo" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Critical" />
-					<cam:Camera icon="sap-icon://camera" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Ghost" />
-					<cam:Camera icon="sap-icon://camera" onChange=".selectImage" class="sapUiSmallMarginBegin" />
-					<cam:Camera icon="sap-icon://add-photo" onChange=".selectImage" class="sapUiSmallMarginBegin" type="Emphasized" />
-				</HBox>
-			</VBox>
+			<IconTabBar expandable="false">
+				<items>
+					<IconTabFilter text="Example">
+						<cam:Camera text="Take a picture" icon="sap-icon://camera" onChange=".selectImage"/>
+						<VBox class="sapUiSmallMargin">
+							<Image id="image" width="300px" height="400px"/>
+						</VBox>
+					</IconTabFilter>
+					<IconTabFilter text="Types">
+						<VBox class="sapUiSmallMargin">
+							<Title text="Use with text" />
+							<cam:Camera text="Take a picture" icon="sap-icon://camera"/>
 
-			<VBox class="sapUiSmallMargin">
-				<Image id="image" width="300px" height="400px"/>
-			</VBox>
+							<Title text="Use with success status" class="sapUiSmallMarginTop"/>
+							<HBox>
+								<cam:Camera icon="sap-icon://add-photo" type="Accept" />
+								<cam:Camera icon="sap-icon://add-photo" class="sapUiSmallMarginBegin" type="Success" />
+							</HBox>
+							<Title text="Use with error status" class="sapUiSmallMarginTop"/>
+
+							<HBox>
+								<cam:Camera icon="sap-icon://camera" type="Reject" />
+								<cam:Camera icon="sap-icon://camera" class="sapUiSmallMarginBegin" type="Negative"/>
+							</HBox>
+							<Title text="Use with critical status" class="sapUiSmallMarginTop"/>
+
+							<HBox>
+								<cam:Camera icon="sap-icon://add-photo" type="Attention" />
+								<cam:Camera icon="sap-icon://add-photo" class="sapUiSmallMarginBegin" type="Critical" />
+							</HBox>
+							<Title text="Use with other statuses and other icons" class="sapUiSmallMarginTop"/>
+
+							<HBox>
+								<cam:Camera icon="sap-icon://video" type="Ghost" />
+								<cam:Camera icon="sap-icon://web-cam" class="sapUiSmallMarginBegin" />
+								<cam:Camera icon="sap-icon://microphone" class="sapUiSmallMarginBegin" type="Emphasized" />
+							</HBox>
+						</VBox>
+
+
+					</IconTabFilter>
+				</items>
+			</IconTabBar>
 		</content>
 	</Page>
 </mvc:View>
