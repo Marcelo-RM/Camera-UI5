@@ -118,6 +118,7 @@ sap.ui.define([
 
                     reader.onload = function (event) {
                         var url = event.target.result;
+                        url = that.resizedataURL(url);
 
                         that.fireOnChange({
                             image: url
@@ -133,6 +134,50 @@ sap.ui.define([
                         that._onUserClickedBtnCamera(oInputCamera);
                     };
                 }
+            },
+
+            //RESIZE METHODS
+            resizedataURL: function (oldUrl) {
+                // Create an image element to receive oldUrl
+                var img = document.createElement('img');
+
+                // When the event "onload" is triggered we can resize the image.
+                img.onload = function () {
+                    // Create a canvas and get its context.
+                    var canvas = document.createElement('canvas');
+                    var ctx = canvas.getContext('2d');
+
+                    // Get the new dimensions.
+                    var dimensions = this.getNewSize(img.width, img.height);
+                    var newWidth = dimensions[0];
+                    var newHeight = dimensions[1];
+
+                    // Set the new dimensions.
+                    canvas.width = newWidth;
+                    canvas.height = newHeight;
+
+                    // Resize the image with the canvas method drawImage();
+                    ctx.drawImage(img, 0, 0, newWidth, newHeight);
+
+                    var dataURI = canvas.toDataURL();
+
+                    // This is the return of the Promise
+                    console.log(oldUrl);
+                    console.log(dataURI);
+
+                    this.fireOnChange({
+                        image: dataURI
+                    });
+                    //resolve(dataURI);
+                }.bind(this);
+
+                // Load the image with the url
+                img.src = oldUrl;
+
+            },
+
+            getNewSize: function (width, height) {
+                return width <= 300 || height <= 300 ? [width, height] : this.getNewSize(width / 1.2, height / 1.2);
             }
         });
         return oCamera;

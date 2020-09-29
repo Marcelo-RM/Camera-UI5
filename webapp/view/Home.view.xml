@@ -13,7 +13,7 @@
 					<IconTabFilter text="Example">
 						<cam:Camera text="Take a picture" icon="sap-icon://camera" onChange=".selectImage"/>
 						<VBox class="sapUiSmallMargin">
-							<Image id="image" width="300px" height="400px"/>
+							<Image id="image"/>
 						</VBox>
 					</IconTabFilter>
 					<IconTabFilter text="Types">
