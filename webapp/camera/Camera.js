@@ -161,14 +161,15 @@ sap.ui.define([
 
                     var dataURI = canvas.toDataURL();
 
-                    // This is the return of the Promise
-                    console.log(oldUrl);
-                    console.log(dataURI);
+                    // This is used to see diferences in size
+                    console.info("Old size: " + this.bytesToSize(new Blob([oldUrl]).size));
+                    console.info("New size: " + this.bytesToSize(new Blob([dataURI]).size));
 
+                    // Fire the onChange Method from Camera Component
                     this.fireOnChange({
                         image: dataURI
                     });
-                    //resolve(dataURI);
+
                 }.bind(this);
 
                 // Load the image with the url
@@ -177,7 +178,14 @@ sap.ui.define([
             },
 
             getNewSize: function (width, height) {
-                return width <= 300 || height <= 300 ? [width, height] : this.getNewSize(width / 1.2, height / 1.2);
+                return width <= 500 || height <= 500 ? [width, height] : this.getNewSize(width / 1.2, height / 1.2);
+            },
+
+            bytesToSize: function (bytes) {
+                var sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB'];
+                if (bytes == 0) return '0 Byte';
+                var i = parseInt(Math.floor(Math.log(bytes) / Math.log(1024)));
+                return Math.round(bytes / Math.pow(1024, i), 2) + ' ' + sizes[i];
             }
         });
         return oCamera;
