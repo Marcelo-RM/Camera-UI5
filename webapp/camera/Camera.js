@@ -114,6 +114,7 @@ sap.ui.define([
 
                 oInputCamera.addEventListener("change", function (oEvent) {
                     var selectedFile = oEvent.target.files[0];
+                    var selectedFileName = oEvent.target.files[0].name;
                     var reader = new FileReader();
 
                     reader.onload = function (event) {
@@ -121,7 +122,8 @@ sap.ui.define([
                         url = that.resizedataURL(url);
 
                         that.fireOnChange({
-                            image: url
+                            image: url,
+                            name: selectedFileName
                         });
                     };
 
