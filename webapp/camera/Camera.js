@@ -114,17 +114,12 @@ sap.ui.define([
 
                 oInputCamera.addEventListener("change", function (oEvent) {
                     var selectedFile = oEvent.target.files[0];
-                    var selectedFileName = oEvent.target.files[0].name;
+                    var sFileName = oEvent.target.files[0].name;
                     var reader = new FileReader();
 
                     reader.onload = function (event) {
                         var url = event.target.result;
-                        url = that.resizedataURL(url);
-
-                        that.fireOnChange({
-                            image: url,
-                            name: selectedFileName
-                        });
+                        that.resizedataURL(url, sFileName);
                     };
 
                     reader.readAsDataURL(selectedFile);
@@ -139,7 +134,7 @@ sap.ui.define([
             },
 
             //RESIZE METHODS
-            resizedataURL: function (oldUrl) {
+            resizedataURL: function (oldUrl, sFileName) {
                 // Create an image element to receive oldUrl
                 var img = document.createElement('img');
 
@@ -168,8 +163,9 @@ sap.ui.define([
                     console.info("New size: " + this.bytesToSize(new Blob([dataURI]).size));
 
                     // Fire the onChange Method from Camera Component
-                    this.fireOnChange({
-                        image: dataURI
+                    that.fireOnChange({
+                        image: url,
+                        name: sFileName
                     });
 
                 }.bind(this);
