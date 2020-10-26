@@ -163,8 +163,8 @@ sap.ui.define([
                     console.info("New size: " + this.bytesToSize(new Blob([dataURI]).size));
 
                     // Fire the onChange Method from Camera Component
-                    that.fireOnChange({
-                        image: url,
+                    this.fireOnChange({
+                        image: dataURI,
                         name: sFileName
                     });
 
